@@ -1,4 +1,4 @@
-# English Premier League End-to-End Data Pipeline & Match Prediction
+# ⚽ English Premier League Match Prediction - End-to-End Data Pipeline
 
 ## Overview
 This repository delivers a fully local, containerized data and ML platform for English Premier League (EPL) match prediction. It combines data ingestion, validation, feature engineering, model training, experiment tracking, API serving, and a production-style web application. The stack is orchestrated with Apache Airflow and runs without any cloud dependencies.
@@ -83,6 +83,7 @@ All pipeline stages are scheduled and monitored through Airflow (`astro_airflow_
 ├── docker-compose.yml         # Shared infrastructure (DBs, Redis, MLflow, FastAPI)
 └── README.md
 ```
+Directory names above match the repository’s actual casing.
 
 ## Key Technology Stack
 - **Orchestration**: Apache Airflow (Astro project)
