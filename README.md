@@ -80,10 +80,10 @@ All pipeline stages are scheduled and monitored through Airflow (`astro_airflow_
 ├── prediction_service/        # FastAPI model serving layer
 ├── Full_Stack_WebApp/          # Django backend + React frontend
 ├── Datasets/                  # DVC-tracked CSV datasets
-├── docker-compose.yml         # Shared infrastructure (DBs, Redis, MLflow, FastAPI)
+├── docker-compose.yml         # Root compose file (DBs, Redis, MLflow, FastAPI)
 └── README.md
 ```
-Directory names above match the repository’s actual casing; legacy naming is preserved for compatibility with existing paths and configs.
+Directory names above match the repository’s actual casing; legacy naming (e.g., `Full_Stack_WebApp`) is preserved for compatibility with existing paths and configs.
 
 ## Key Technology Stack
 - **Orchestration**: Apache Airflow (Astro project)
