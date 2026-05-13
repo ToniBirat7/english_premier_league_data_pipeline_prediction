@@ -7,12 +7,12 @@ This repository delivers a fully local, containerized data and ML platform for E
 ```mermaid
 flowchart LR
   subgraph Sources
-    A[Historical CSVs<br/>Datasets/] -->|DVC-tracked| B[Airflow: data_ingestion]
+    A[Historical CSVs<br/>Datasets/] -->|DVC-tracked| B[Airflow: data_ingestion_dag]
     S[Django API<br/>Match data for scraper] --> T[Airflow: scrape_store_as_csv_dag]
     T --> A
   end
 
-  B --> C[Airflow: data_validation]
+  B --> C[Airflow: data_validation_dag]
   C --> D[Airflow: data_transformation]
   D --> E[MariaDB<br/>final_dataset table]
   E --> F[Airflow: model_train]
@@ -27,7 +27,7 @@ flowchart LR
 ```
 
 ## End-to-End Data Pipeline (Airflow)
-All pipeline stages are scheduled and monitored through Airflow (`astro_airflow_mlflow`). DAG names below match current `dag_id` values (suffixes are not uniform):
+All pipeline stages are scheduled and monitored through Airflow (`astro_airflow_mlflow`). DAG names below match current `dag_id` values; suffixes vary due to legacy naming and are kept for compatibility.
 
 1. **Scrape & Snapshot** (`scrape_store_as_csv_dag`)
    - Pulls match data from the Django API.
