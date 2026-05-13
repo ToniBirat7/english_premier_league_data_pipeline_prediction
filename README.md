@@ -27,7 +27,7 @@ flowchart LR
 ```
 
 ## End-to-End Data Pipeline (Airflow)
-All pipeline stages are scheduled and monitored through Airflow (`astro_airflow_mlflow`):
+All pipeline stages are scheduled and monitored through Airflow (`astro_airflow_mlflow`). DAG names below match current `dag_id` values (suffixes are not uniform):
 
 1. **Scrape & Snapshot** (`scrape_store_as_csv_dag`)
    - Pulls match data from the Django API.
@@ -83,7 +83,7 @@ All pipeline stages are scheduled and monitored through Airflow (`astro_airflow_
 ├── docker-compose.yml         # Shared infrastructure (DBs, Redis, MLflow, FastAPI)
 └── README.md
 ```
-Directory names above match the repository’s actual casing, even where naming conventions vary.
+Directory names above match the repository’s actual casing; legacy naming is preserved for compatibility with existing paths and configs.
 
 ## Key Technology Stack
 - **Orchestration**: Apache Airflow (Astro project)
