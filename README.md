@@ -1,4 +1,4 @@
-# ⚽ English Premier League Match Prediction - End-to-End Data Pipeline
+# ⚽ English Premier League Match Prediction - End-to-End ML & Data Pipeline
 
 ## Overview
 This repository delivers a fully local, containerized data and ML platform for English Premier League (EPL) match prediction. It combines data ingestion, validation, feature engineering, model training, experiment tracking, API serving, and a production-style web application. The stack is orchestrated with Apache Airflow and runs without any cloud dependencies.
@@ -8,7 +8,7 @@ This repository delivers a fully local, containerized data and ML platform for E
 flowchart LR
   subgraph Sources
     A[Historical CSVs<br/>Datasets/] -->|DVC-tracked| B[Airflow: data_ingestion_dag]
-    S[Django API<br/>Match data] --> T[Airflow: scrape_store_as_csv_dag]
+    S[Django API<br/>Match data for scraper] --> T[Airflow: scrape_store_as_csv_dag]
     T --> A
   end
 
@@ -37,7 +37,7 @@ All pipeline stages are scheduled and monitored through Airflow (`astro_airflow_
    - Copies all CSVs from `Datasets/` into the Airflow artifacts ingestion folder.
 
 3. **Validation** (`data_validation_dag`)
-   - Enforces column presence and dtype compatibility using `schema.yaml`.
+   - Enforces column presence and dtype compatibility using `astro_airflow_mlflow/schema.yaml`.
    - Fails fast if any dataset does not match the required contract.
 
 4. **Transformation & Feature Engineering** (`data_transformation`)
@@ -61,7 +61,7 @@ All pipeline stages are scheduled and monitored through Airflow (`astro_airflow_
   - Fetches feature inputs from PostgreSQL and returns match outcome probabilities.
 
 - **Django Backend + React Frontend** (`Full_Stack_WebApp/`)
-  - Django exposes match data and consumes the FastAPI prediction endpoint.
+  - Django exposes match data for the scraper and consumes the FastAPI prediction endpoint.
   - React renders fixtures, tables, team views, and prediction outputs.
 
 ## Core Data Stores
@@ -83,7 +83,7 @@ All pipeline stages are scheduled and monitored through Airflow (`astro_airflow_
 ├── docker-compose.yml         # Shared infrastructure (DBs, Redis, MLflow, FastAPI)
 └── README.md
 ```
-Directory names above match the repository’s actual casing.
+Directory names above match the repository’s actual casing, even where naming conventions vary.
 
 ## Key Technology Stack
 - **Orchestration**: Apache Airflow (Astro project)
