@@ -7,12 +7,12 @@ This repository delivers a fully local, containerized data and ML platform for E
 ```mermaid
 flowchart LR
   subgraph Sources
-    A[Historical CSVs<br/>Datasets/] -->|DVC-tracked| B[Airflow: data_ingestion_dag]
+    A[Historical CSVs<br/>Datasets/] -->|DVC-tracked| B[Airflow: data_ingestion]
     S[Django API<br/>Match data for scraper] --> T[Airflow: scrape_store_as_csv_dag]
     T --> A
   end
 
-  B --> C[Airflow: data_validation_dag]
+  B --> C[Airflow: data_validation]
   C --> D[Airflow: data_transformation]
   D --> E[MariaDB<br/>final_dataset table]
   E --> F[Airflow: model_train]
